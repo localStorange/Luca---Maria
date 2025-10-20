@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="imagens/heart.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
+  <title>Feliz dia, meu amor</title>
+  <style>
+    /* SEU CSS ORIGINAL */
+    /* Resetando estilos padrão */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Paleta de salmão */
+    :root {
+      --salmão-claro-1: #fff0f0;
+      --salmão-claro-2: #ffe0e0;
+      --salmão-claro-3: #ffebeb;
+      --salmão-claro-4: #ffd6d6;
+      --salmão-escuro: #d45d5d;
+      --salmão-destaque: #ff8c8c;
+    }
+
+    /* Corpo da página */
+    body {
+      font-family: 'Dancing Script', cursive;
+      background-color: var(--salmão-claro-1);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      animation: none;
+    }
+
+    /* Cabeçalho */
+    header {
+      background-color: var(--salmão-claro-2);
+      color: var(--salmão-escuro);
+      text-align: center;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    /* Seções */
+    section {
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: var(--salmão-claro-3);
+    }
+
+    section:nth-child(even) {
+      background-color: var(--salmão-claro-4);
+    }
+
+    section h2 {
+      color: var(--salmão-escuro);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Estilo das imagens */
+    .imagens {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      background-color: transparent !important;
+    }
+
+    .imagens img {
+      width: 40%;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      border: 3px solid var(--salmão-destaque);
+    }
+
+    .imagens img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Estilo do vídeo */
+    iframe {
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      width: 40%;
+      border: 3px solid var(--salmão-destaque);
+    }
+
+    /* Rodapé */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 1.1rem;
+      color: var(--salmão-escuro);
+      font-family: 'Georgia', serif;
+      padding: 20px;
+      background-color: var(--salmão-claro-2);
+      border-radius: 10px;
+    }
+
+    /* Efeitos de hover para seções */
+    section:hover {
+      background-color: var(--salmão-claro-2);
+      transition: background-color 0.3s ease;
+    }
+
+    /* Ajuste para dispositivos móveis */
+    @media (max-width: 768px) {
+      .imagens {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .imagens img {
+        width: 90%;
+        max-width: 40000px;
+        margin-bottom: 15px;
+        border: 3px solid var(--salmão-destaque);
+      }
+
+      iframe {
+        width: 90%;
+        max-width: 400px;
+        height: 400px;
+        margin-bottom: 15px;
+        border: 3px solid var(--salmão-destaque);
+      }
+
+      section {
+        padding: 15px;
+        background-color: var(--salmão-claro-3);
+      }
+
+      section:nth-child(even) {
+        background-color: var(--salmão-claro-4);
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header, footer {
+        background-color: var(--salmão-claro-2);
+      }
+    }
+
+    /* BOTÃO DE MÚSICA - usando seu estilo */
+    #btn-musica {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px auto 40px auto;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      font-family: 'Dancing Script', cursive;
+      color: white;
+      background-color: var(--salmão-escuro);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      min-width: 200px;
+    }
+
+    #btn-musica:hover {
+      background-color: var(--salmão-destaque);
+      transform: scale(1.05);
+    }
+
+    /* Indicador de que está tocando */
+    .sound-waves {
+      display: none;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .wave {
+      display: inline-block;
+      width: 3px;
+      height: 12px;
+      margin: 0 1px;
+      background-color: var(--salmão-destaque);
+      border-radius: 1px;
+      animation: wave 1.2s infinite ease-in-out;
+    }
+
+    .wave:nth-child(2) { animation-delay: 0.1s; }
+    .wave:nth-child(3) { animation-delay: 0.2s; }
+    .wave:nth-child(4) { animation-delay: 0.3s; }
+    .wave:nth-child(5) { animation-delay: 0.4s; }
+
+    @keyframes wave {
+      0%, 40%, 100% { transform: scaleY(0.5); }
+      20% { transform: scaleY(1.5); }
+    }
+
+    /* Estado de carregamento */
+    .loading {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 2px solid white;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <h1>Feliz aniversário meu amor &#10084;&#65039;!</h1>
+  </header>
+
+  <!-- Botão de música -->
+  <div class="musica-container">
+    <button id="btn-musica">
+      <span class="btn-icon">🎵</span>
+      <span class="btn-text">Tocar música</span>
+      <div class="loading"></div>
+    </button>
+    <div class="sound-waves">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+    <audio id="musica" loop>
+      <source src="musica.mp3" type="audio/mpeg">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <section>
+      <p><b>texto</b></p>
+    </section>
+
+    <section class="imagens">
+      <img src="imagens/WhatsApp Image 2025-10-20 at 15.39.20.jpeg" alt="Foto especial">
+    </section>
+
+    <section>
+      <p><b>texto</b></p>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p><b>Te amo mais que tudo! ❤️</b></p>
+  </footer>
+
+  <script>
+    const botao = document.getElementById("btn-musica");
+    const musica = document.getElementById("musica");
+    const btnIcon = document.querySelector(".btn-icon");
+    const btnText = document.querySelector(".btn-text");
+    const loading = document.querySelector(".loading");
+    const soundWaves = document.querySelector(".sound-waves");
+    
+    let tocando = false;
+    let musicaCarregada = false;
+
+    // Configurar a música
+    musica.volume = 0.7;
+
+    // Tentar carregar a música quando a página carregar
+    window.addEventListener('load', function() {
+      musica.load();
+      musicaCarregada = true;
+    });
+
+    botao.addEventListener('click', function() {
+      if (!tocando) {
+        tocarMusica();
+      } else {
+        pausarMusica();
+      }
+    });
+
+    function tocarMusica() {
+      // Mostrar carregamento
+      btnIcon.style.display = "none";
+      loading.style.display = "block";
+      btnText.textContent = "Carregando...";
+      botao.disabled = true;
+
+      // Garantir que a música está no início
+      musica.currentTime = 0;
+
+      // Tentar tocar
+      const promise = musica.play();
+
+      if (promise !== undefined) {
+        promise
+          .then(() => {
+            // Sucesso
+            tocando = true;
+            btnIcon.textContent = "⏸️";
+            btnIcon.style.display = "inline";
+            loading.style.display = "none";
+            btnText.textContent = "Pausar música";
+            soundWaves.style.display = "flex";
+            botao.disabled = false;
+          })
+          .catch(error => {
+            // Falha - tentar método alternativo
+            console.log("Primeira tentativa falhou, tentando novamente...");
+            tentarNovamente();
+          });
+      }
+    }
+
+    function tentarNovamente() {
+      // Pequeno delay antes da segunda tentativa
+      setTimeout(() => {
+        musica.play()
+          .then(() => {
+            // Sucesso na segunda tentativa
+            tocando = true;
+            btnIcon.textContent = "⏸️";
+            btnIcon.style.display = "inline";
+            loading.style.display = "none";
+            btnText.textContent = "Pausar música";
+            soundWaves.style.display = "flex";
+            botao.disabled = false;
+          })
+          .catch(error => {
+            // Falha definitiva
+            console.error("Não foi possível tocar a música:", error);
+            btnIcon.textContent = "🔇";
+            btnIcon.style.display = "inline";
+            loading.style.display = "none";
+            btnText.textContent = "Clique para ativar";
+            botao.disabled = false;
+            
+            // Mensagem de ajuda
+            setTimeout(() => {
+              alert("Para tocar a música, você pode precisar:\n\n1. Clicar em qualquer lugar da página primeiro\n2. Permitir áudio no seu navegador\n3. Atualizar a página e tentar novamente");
+            }, 500);
+          });
+      }, 300);
+    }
+
+    function pausarMusica() {
+      musica.pause();
+      tocando = false;
+      btnIcon.textContent = "🎵";
+      btnText.textContent = "Tocar música";
+      soundWaves.style.display = "none";
+    }
+
+    // Resetar quando a música terminar (se não estiver em loop)
+    musica.addEventListener('ended', function() {
+      if (!musica.loop) {
+        pausarMusica();
+      }
+    });
+
+    // Tratamento de erro do áudio
+    musica.addEventListener('error', function(e) {
+      console.error("Erro no áudio:", e);
+      loading.style.display = "none";
+      btnIcon.textContent = "❌";
+      btnIcon.style.display = "inline";
+      btnText.textContent = "Erro no áudio";
+      botao.disabled = false;
+      
+      setTimeout(() => {
+        btnIcon.textContent = "🎵";
+        btnText.textContent = "Tentar novamente";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
